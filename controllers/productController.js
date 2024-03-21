@@ -3,8 +3,8 @@ const Product = require('../models/Product');
 // Create Product
 exports.createProduct = async (req, res) => {
     try {
-        const {id, image, title, price, description } = req.body;
-        const product = new Product({id, image, title, price, description });
+        const {id, image, title, price, description,stocks, chooseItem } = req.body;
+        const product = new Product({id, image, title, price, description,stocks, chooseItem });
         if(req.file){
             product.image = req.file.path
         }
@@ -41,8 +41,8 @@ exports.getProductById = async (req, res) => {
 // Update Product
 exports.updateProduct = async (req, res) => {
     try {
-        const {id, title, price, description } = req.body;
-        const updatedProduct = await Product.findByIdAndUpdate(req.params.id, {id, title, price, description }, { new: true });
+        const {id, title, price, description, stocks, chooseItem } = req.body;
+        const updatedProduct = await Product.findByIdAndUpdate(req.params.id, {id, title, price, description, stocks, chooseItem }, { new: true });
         if (!updatedProduct) {
             return res.status(404).json({ message: 'Product not found' });
         }
