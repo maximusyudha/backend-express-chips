@@ -2,6 +2,7 @@ Penambahan:
 
 users:
 /api/users/profile (untuk get all data user)
+/api/admins/profile (untuk get all data admin)
 
 cart: 
 /api/cart/add-to-cart (post data ke cart by Product id)
